@@ -9,42 +9,26 @@ class Map extends StatelessWidget {
   Widget build(BuildContext context) {
     return FlutterMap(
       options: MapOptions(
-        center: LatLng(51.5, -0.09),
+        center: LatLng(53, -1),
         zoom: 13.0,
+        rotation: 0.0,
       ),
       layers: [
+        TileLayerOptions(
+            urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+            subdomains: ['a', 'b', 'c']),
         MarkerLayerOptions(
           markers: [
             Marker(
-              width: 80.0,
-              height: 80.0,
-              point: LatLng(51.5, -0.09),
+              width: 50.0,
+              height: 50.0,
+              point: LatLng(53, -1),
               builder: (ctx) => Container(
                 child: FlutterLogo(),
               ),
             ),
           ],
         ),
-      ],
-      children: <Widget>[
-        TileLayerWidget(
-            options: TileLayerOptions(
-                urlTemplate:
-                    "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                subdomains: ['a', 'b', 'c'])),
-        MarkerLayerWidget(
-            options: MarkerLayerOptions(
-          markers: [
-            Marker(
-              width: 80.0,
-              height: 80.0,
-              point: LatLng(51.5, -0.09),
-              builder: (ctx) => Container(
-                child: FlutterLogo(),
-              ),
-            ),
-          ],
-        )),
       ],
     );
   }
