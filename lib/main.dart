@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import './screens/map_screen.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -46,7 +48,10 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const MapScreen()));
+              },
               child: const Text('Open Map'),
             ),
           ],
