@@ -42,6 +42,9 @@ PODS:
     - nanopb/encode (= 2.30908.0)
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
+  - photo_manager (1.0.0):
+    - Flutter
+    - FlutterMacOS
   - PromisesObjC (2.0.0)
 
 DEPENDENCIES:
@@ -49,6 +52,7 @@ DEPENDENCIES:
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - FirebaseFirestore (from `https://github.com/invertase/firestore-ios-sdk-frameworks.git`, tag `8.9.0`)
   - Flutter (from `Flutter`)
+  - photo_manager (from `.symlinks/plugins/photo_manager/ios`)
 
 SPEC REPOS:
   trunk:
@@ -70,6 +74,8 @@ EXTERNAL SOURCES:
     :tag: 8.9.0
   Flutter:
     :path: Flutter
+  photo_manager:
+    :path: ".symlinks/plugins/photo_manager/ios"
 
 CHECKOUT OPTIONS:
   FirebaseFirestore:
@@ -87,6 +93,7 @@ SPEC CHECKSUMS:
   GoogleDataTransport: 629c20a4d363167143f30ea78320d5a7eb8bd940
   GoogleUtilities: 684ee790a24f73ebb2d1d966e9711c203f2a4237
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
+  photo_manager: 84fa94fbeb82e607333ea9a13c43b58e0903a463
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
 
 PODFILE CHECKSUM: ffb1009dcb94f48878348d84a478f97874855529
