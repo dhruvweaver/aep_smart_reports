@@ -12,6 +12,39 @@ class ImageViewerScreen extends StatefulWidget {
 }
 
 class _ImageViewerScreenState extends State<ImageViewerScreen> {
+  // void onPanStart(DragStartDetails details) {
+  //   print('User started drawing');
+  //   final box = context.findRenderObject() as RenderBox;
+  //   final point = box.globalToLocal(details.globalPosition);
+  //   print(point);
+  // }
+
+  // void onPanUpdate(DragUpdateDetails details) {
+  //   final box = context.findRenderObject() as RenderBox;
+  //   final point = box.globalToLocal(details.globalPosition);
+  //   print(point);
+  // }
+
+  // void onPanEnd(DragEndDetails details) {
+  //   print('User ended drawing');
+  // }
+
+  // GestureDetector buildCurrentPath(BuildContext context) {
+  //   return GestureDetector(
+  //     onPanStart: onPanStart,
+  //     onPanUpdate: onPanUpdate,
+  //     onPanEnd: onPanEnd,
+  //     child: RepaintBoundary(
+  //       child: Container(
+  //         color: Colors.transparent,
+  //         width: MediaQuery.of(context).size.width,
+  //         height: MediaQuery.of(context).size.height,
+  //         // CustomPaint widget will go here
+  //       ),
+  //     ),
+  //   );
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,12 +62,19 @@ class _ImageViewerScreenState extends State<ImageViewerScreen> {
         keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
         child: Column(
           children: [
-            CustomPaint(
+            // CustomPaint(
+            //   child: Image.network(
+            //     "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/AEP_Building_from_Rhodes_State.jpg/400px-AEP_Building_from_Rhodes_State.jpg",
+            //     width: double.infinity,
+            //   ),
+            //   painter: NewCustomPainter(),
+            // ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12),
               child: Image.network(
                 "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/AEP_Building_from_Rhodes_State.jpg/400px-AEP_Building_from_Rhodes_State.jpg",
                 width: double.infinity,
               ),
-              painter: NewCustomPainter(),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(12, 24, 12, 48),
