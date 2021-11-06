@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../model/new_custom_painter.dart';
+
 class ImageViewerScreen extends StatefulWidget {
   final String id;
 
@@ -13,6 +15,7 @@ class _ImageViewerScreenState extends State<ImageViewerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
         title: Text(
           'Image: ${widget.id}',
@@ -22,17 +25,48 @@ class _ImageViewerScreenState extends State<ImageViewerScreen> {
         backgroundColor: Colors.white,
         elevation: 0,
       ),
-      body: Column(
-        children: [
-          InteractiveViewer(
-            panEnabled: false,
-            boundaryMargin: const EdgeInsets.all(100),
-            minScale: 1,
-            maxScale: 3,
-            child: Image.network(
-                "https://pyxis.nymag.com/v1/imgs/819/12a/46aa0a6292788f5febd7065e16374fdc2a-30-drone-lede.2x.rsocial.w600.jpg"),
-          )
-        ],
+      body: SingleChildScrollView(
+        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+        child: Column(
+          children: [
+            CustomPaint(
+              child: Image.network(
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/AEP_Building_from_Rhodes_State.jpg/400px-AEP_Building_from_Rhodes_State.jpg",
+                width: double.infinity,
+              ),
+              painter: NewCustomPainter(),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(12, 24, 12, 48),
+              child: TextField(
+                maxLines: 5,
+                // controller: widget.emailController,
+                decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(15.0),
+                    ),
+                    borderSide: BorderSide(color: Theme.of(context).focusColor),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(15.0),
+                    ),
+                    borderSide: BorderSide(color: Theme.of(context).focusColor),
+                  ),
+                  filled: true,
+                  fillColor: Theme.of(context).canvasColor,
+                  labelText: "Notes",
+                  alignLabelWithHint: true,
+                  labelStyle: TextStyle(color: Theme.of(context).hintColor),
+                ),
+                autocorrect: true,
+                textCapitalization: TextCapitalization.sentences,
+                keyboardType: TextInputType.text,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
