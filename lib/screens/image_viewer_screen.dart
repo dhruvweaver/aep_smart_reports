@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ImageViewerScreen extends StatefulWidget {
-  const ImageViewerScreen({Key? key, required this.id}) : super(key: key);
-
   final String id;
+
+  const ImageViewerScreen({Key? key, required this.id}) : super(key: key);
 
   @override
   _ImageViewerScreenState createState() => _ImageViewerScreenState();
@@ -15,7 +15,7 @@ class _ImageViewerScreenState extends State<ImageViewerScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Image: $widget.id',
+          'Image: ${widget.id}',
           style: const TextStyle(color: Colors.black),
         ),
         iconTheme: const IconThemeData(color: Colors.black),
@@ -24,8 +24,14 @@ class _ImageViewerScreenState extends State<ImageViewerScreen> {
       ),
       body: Column(
         children: [
-          Image.network(
-              "https://pyxis.nymag.com/v1/imgs/819/12a/46aa0a6292788f5febd7065e16374fdc2a-30-drone-lede.2x.rsocial.w600.jpg")
+          InteractiveViewer(
+            panEnabled: false,
+            boundaryMargin: const EdgeInsets.all(100),
+            minScale: 1,
+            maxScale: 3,
+            child: Image.network(
+                "https://pyxis.nymag.com/v1/imgs/819/12a/46aa0a6292788f5febd7065e16374fdc2a-30-drone-lede.2x.rsocial.w600.jpg"),
+          )
         ],
       ),
     );

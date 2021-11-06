@@ -10,7 +10,7 @@ class ImageMarker extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        print("Marker tapped");
+        print("Marker tapped, $id");
         Navigator.push(
             context,
             MaterialPageRoute(
@@ -19,7 +19,7 @@ class ImageMarker extends StatelessWidget {
       },
       child: Container(
         decoration: const BoxDecoration(
-          color: Colors.purple,
+          color: Colors.red,
           shape: BoxShape.circle,
         ),
       ),
