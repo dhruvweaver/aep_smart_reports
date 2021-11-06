@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1063261497817",
+    "project_id": "aepsmartreports",
+    "storage_bucket": "aepsmartreports.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1063261497817:android:0d6af8ce1b28ec68ea91c8",
+        "android_client_info": {
+          "package_name": "com.example.aep_smart_reports"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1063261497817-opr87qohfkq04tgdg86jlsluinkpdubt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJMHlw2xDMNvOfbhFpzDGD4bXzf21pL1Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1063261497817-opr87qohfkq04tgdg86jlsluinkpdubt.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1063261497817-ntjhp9utvul2pqil3edro9rvrliescle.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.aepSmartReports"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
