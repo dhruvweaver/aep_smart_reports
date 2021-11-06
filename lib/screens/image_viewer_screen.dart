@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../model/new_custom_painter.dart';
-
 class ImageViewerScreen extends StatefulWidget {
   final String id;
 
