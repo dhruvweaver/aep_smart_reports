@@ -1,6 +1,11 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:provider/src/provider.dart';
 
 import '../widgets/map.dart';
+import '../model/authentication_service.dart';
+import '../model/picture_list.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({Key? key}) : super(key: key);
@@ -10,19 +15,66 @@ class MapScreen extends StatefulWidget {
 }
 
 class _MapScreenState extends State<MapScreen> {
+  late PictureList list;
+  Future<PictureList> getPictureList() async {
+    // return await Future.delayed(const Duration(seconds: 2), () {
+    //   return PictureList.create();
+    // });
+    return await PictureList.create();
+  }
+
+  @override
+  void initState() {
+    getPictureList().then((value) {
+      if (mounted) {
+        setState(() {
+          list = value;
+        });
+      }
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+    Future<PictureList> picList = getPictureList().then((value) {
+      return value;
+    });
+
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(
+            Icons.logout_rounded,
+            color: Theme.of(context).iconTheme.color,
+          ),
+          onPressed: () {
+            context.read<AuthenticationService>().signOut();
+          },
+        ),
         title: const Text(
-          'Map',
+          'AEP Smart Reports',
           style: TextStyle(color: Colors.black),
         ),
         iconTheme: const IconThemeData(color: Colors.black),
         backgroundColor: Colors.white,
         elevation: 0,
       ),
-      body: const Map(),
+      body: FutureBuilder(
+          future: Future.wait([picList]),
+          builder: (context, AsyncSnapshot<List<PictureList>> snapshot) {
+            if (snapshot.hasData) {
+              // list = snapshot.data![0];
+              print("Map screen list: ${list.picList.length}");
+              return Map(
+                picList: list,
+              );
+            } else {
+              return Center(
+                child: Text("${snapshot.error}"),
+              );
+            }
+          }),
     );
   }
 }
