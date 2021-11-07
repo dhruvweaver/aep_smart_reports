@@ -1,6 +1,8 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import './screens/map_screen.dart';
+import './model/picture_list.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,29 +36,35 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          widget.title,
-          style: const TextStyle(color: Colors.black),
-        ),
-        backgroundColor: Colors.white,
-        elevation: 0,
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const MapScreen()));
-              },
-              child: const Text('Open Map'),
+    return FutureBuilder(
+        future: Firebase.initializeApp(),
+        builder: (context, snapshot) {
+          return Scaffold(
+            appBar: AppBar(
+              title: Text(
+                widget.title,
+                style: const TextStyle(color: Colors.black),
+              ),
+              backgroundColor: Colors.white,
+              elevation: 0,
             ),
-          ],
-        ),
-      ),
-    );
+            body: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const MapScreen()));
+                    },
+                    child: const Text('Open Map'),
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
   }
 }

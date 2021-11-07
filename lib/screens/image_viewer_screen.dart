@@ -2,54 +2,25 @@ import 'package:flutter/material.dart';
 
 class ImageViewerScreen extends StatefulWidget {
   final String id;
-
-  const ImageViewerScreen({Key? key, required this.id}) : super(key: key);
+  final List<String> picIdList;
+  const ImageViewerScreen({
+    Key? key,
+    required this.id,
+    required this.picIdList,
+  }) : super(key: key);
 
   @override
   _ImageViewerScreenState createState() => _ImageViewerScreenState();
 }
 
 class _ImageViewerScreenState extends State<ImageViewerScreen> {
-  // void onPanStart(DragStartDetails details) {
-  //   print('User started drawing');
-  //   final box = context.findRenderObject() as RenderBox;
-  //   final point = box.globalToLocal(details.globalPosition);
-  //   print(point);
-  // }
-
-  // void onPanUpdate(DragUpdateDetails details) {
-  //   final box = context.findRenderObject() as RenderBox;
-  //   final point = box.globalToLocal(details.globalPosition);
-  //   print(point);
-  // }
-
-  // void onPanEnd(DragEndDetails details) {
-  //   print('User ended drawing');
-  // }
-
-  // GestureDetector buildCurrentPath(BuildContext context) {
-  //   return GestureDetector(
-  //     onPanStart: onPanStart,
-  //     onPanUpdate: onPanUpdate,
-  //     onPanEnd: onPanEnd,
-  //     child: RepaintBoundary(
-  //       child: Container(
-  //         color: Colors.transparent,
-  //         width: MediaQuery.of(context).size.width,
-  //         height: MediaQuery.of(context).size.height,
-  //         // CustomPaint widget will go here
-  //       ),
-  //     ),
-  //   );
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
         title: Text(
-          'Image: ${widget.id}',
+          'ID: ${widget.id}',
           style: const TextStyle(color: Colors.black),
         ),
         iconTheme: const IconThemeData(color: Colors.black),
@@ -70,7 +41,7 @@ class _ImageViewerScreenState extends State<ImageViewerScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12),
               child: Image.network(
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/AEP_Building_from_Rhodes_State.jpg/400px-AEP_Building_from_Rhodes_State.jpg",
+                "gs://aepsmartreports.appspot.com/${widget.picIdList[0]}",
                 width: double.infinity,
               ),
             ),

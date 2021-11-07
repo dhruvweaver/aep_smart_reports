@@ -5,12 +5,12 @@ enum objectType {
 
 class PictureData {
   final int id;
-  final objectType type;
+  final String type;
   final double lat;
   final double lng;
-  final List<String>? picIdList; // make non-nullable
+  final List<String> picIdList; // make non-nullable
 
-  PictureData({
+  PictureData._internal({
     required this.id,
     required this.type,
     required this.lat,
@@ -18,8 +18,13 @@ class PictureData {
     required this.picIdList,
   });
 
-  // factory PictureData() {
-  //   return PictureData._internal(
-  //       id: 1, type: objectType.transformers, lat: 1, lng: 1, picIdList: null);
-  // }
+  factory PictureData.fromMap(Map<String, dynamic> data) {
+    return PictureData._internal(
+      id: int.parse(data["type_id"]),
+      type: data["type"],
+      lat: double.parse(data["lat"]),
+      lng: double.parse(data["lng"]),
+      picIdList: data["pic_id_list"].split(", "),
+    );
+  }
 }
