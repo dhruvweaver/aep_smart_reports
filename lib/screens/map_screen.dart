@@ -1,8 +1,10 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:provider/src/provider.dart';
 
 import '../widgets/map.dart';
+import '../model/authentication_service.dart';
 import '../model/picture_list.dart';
 
 class MapScreen extends StatefulWidget {
@@ -41,8 +43,17 @@ class _MapScreenState extends State<MapScreen> {
 
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(
+            Icons.logout_rounded,
+            color: Theme.of(context).iconTheme.color,
+          ),
+          onPressed: () {
+            context.read<AuthenticationService>().signOut();
+          },
+        ),
         title: const Text(
-          'Map',
+          'AEP Smart Reports',
           style: TextStyle(color: Colors.black),
         ),
         iconTheme: const IconThemeData(color: Colors.black),
