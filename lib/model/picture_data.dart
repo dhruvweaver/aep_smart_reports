@@ -19,12 +19,18 @@ class PictureData {
   });
 
   factory PictureData.fromMap(Map<String, dynamic> data) {
+    String list = data["pic_id_list"];
+    list.replaceAll(' ', '');
+    list.replaceAll('[', '');
+    list.replaceAll(']', '');
+    list.replaceAll('\'', '');
+    print("List >>>>>> $list");
     return PictureData._internal(
       id: int.parse(data["type_id"]),
       type: data["type"],
       lat: double.parse(data["lat"]),
       lng: double.parse(data["lng"]),
-      picIdList: data["pic_id_list"].split(", "),
+      picIdList: list.split(','),
     );
   }
 }

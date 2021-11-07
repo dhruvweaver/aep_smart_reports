@@ -23,13 +23,14 @@ class Map extends StatelessWidget {
               picList.picList[i].lat, -1 * picList.picList[i].lng),
           builder: (ctx) => ImageMarker(
               picIdList: picList.picList[i].picIdList,
+              type: picList.picList[i].type,
               id: "${picList.picList[i].id}")));
     }
     print("List length >>> ${list.length}");
 
     return FlutterMap(
       options: MapOptions(
-        center: latlng.LatLng(38, -82),
+        center: latlng.LatLng(38, -83),
         zoom: 6.5,
         rotation: 0.0,
       ),

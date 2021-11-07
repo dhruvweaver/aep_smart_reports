@@ -15,9 +15,22 @@ class MapScreen extends StatefulWidget {
 class _MapScreenState extends State<MapScreen> {
   late PictureList list;
   Future<PictureList> getPictureList() async {
-    return await Future.delayed(const Duration(seconds: 2), () {
-      return PictureList.create();
+    // return await Future.delayed(const Duration(seconds: 2), () {
+    //   return PictureList.create();
+    // });
+    return await PictureList.create();
+  }
+
+  @override
+  void initState() {
+    getPictureList().then((value) {
+      if (mounted) {
+        setState(() {
+          list = value;
+        });
+      }
     });
+    super.initState();
   }
 
   @override
@@ -40,7 +53,7 @@ class _MapScreenState extends State<MapScreen> {
           future: Future.wait([picList]),
           builder: (context, AsyncSnapshot<List<PictureList>> snapshot) {
             if (snapshot.hasData) {
-              list = snapshot.data![0];
+              // list = snapshot.data![0];
               print("Map screen list: ${list.picList.length}");
               return Map(
                 picList: list,

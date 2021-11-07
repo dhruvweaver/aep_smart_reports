@@ -54,10 +54,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: <Widget>[
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const MapScreen()));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => MapScreen()));
                     },
                     child: const Text('Open Map'),
                   ),
